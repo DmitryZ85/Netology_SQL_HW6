@@ -5,7 +5,7 @@ import json
 
 Base = declarative_base()
 
-DSN = 'postgresql://postgres:Z25instr@localhost:5432/netology_hw6'
+DSN = 'postgresql://postgres:postgres@localhost:5432/netology_hw6'
 engine = sqlalchemy.create_engine(DSN)
 con = engine.connect()
 
