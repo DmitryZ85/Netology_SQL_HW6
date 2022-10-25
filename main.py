@@ -2,10 +2,11 @@ import sqlalchemy
 import sqlalchemy as sq
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 import json
+import psycopg2
 
 Base = declarative_base()
 
-DSN = 'postgresql://postgres:postgres@localhost:5432/netology_hw6'
+DSN = 'postgresql://postgres:password@localhost:5432/netology_hw6'
 engine = sqlalchemy.create_engine(DSN)
 con = engine.connect()
 
@@ -38,7 +39,7 @@ class Shop(Base):
 class Stock(Base):
     __tablename__ = "stock"
     id = sq.Column(sq.Integer, primary_key=True)
-    id_book = sq.Column(sq.Integer, sq.ForeignKey("stock.id"), nullable=False)
+    id_book = sq.Column(sq.Integer, sq.ForeignKey("book.id"), nullable=False)
     id_shop = sq.Column(sq.Integer, sq.ForeignKey("shop.id"), nullable=False)
     count = sq.Column(sq.Integer)
 
@@ -63,7 +64,7 @@ def create_tables(engine):
 
 create_tables(engine)
 
-with open(test_data.json, 'r') as f:
+with open('test_data.json', 'r') as f:
     data = json.load(f)
 
 for record in data:
