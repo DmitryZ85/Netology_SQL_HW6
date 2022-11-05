@@ -2,7 +2,7 @@ import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 import json
 import psycopg2
-from Models import Publisher, Book, Shop, Stock, Sale, create_tables
+from models import Publisher, Book, Shop, Stock, Sale, create_tables
 
 
 #Item 1
